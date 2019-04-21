@@ -1,0 +1,78 @@
+*
+$colorDeepBlue: #2F4A6E
+$colorYellow: #FFC12C
+$colorOrange: #F38A0C
+$colorShadow: rgba(black,0.1)
+
+$shadowInset: inset -10px -10px $colorShadow
+//---------
+
+=size($w,$h:$w)
+  width: $w
+  height: $h
+=flexCenter
+  display: flex // df
+  justify-content: center // jcc
+  align-items: center  // aic
+=bdrsRect($w,$h:$w,$bdrs:($h/2))
+  width: $w
+  height: $h
+  border-radius: $bdrs //bdrs
+  
+
+html,body
+  +size(100%)
+  margin: 0
+  +flexCenter
+.scene
+  +size(400px,400px)
+  +flexCenter
+  background-color: #FFF
+  position: relative
+.person
+  position: relative
+  .body
+    +bdrsRect(200px,150px,200px)
+    padding-top: 50px
+    margin-top: 0px
+    background-color: PINK
+    .eyes
+      .eye
+        +bdrsRect(70px,50px)
+        display: inline-block
+        margin-right: 0px
+        margin-left: 10px
+        background-color: #FFF
+        
+        .eyeball
+          +bdrsRect(40px,40px)
+          background-color: GREEN
+  .person
+  transition: 1s   
+  .body
+    transition: 1s,background-color 1s 1s
+  *
+    transition: 0.5s
+        
+.scene:hover
+  .person
+    margin-top: 50px
+    .body
+      box-shadow: $shadowInset,30px 10px $colorShadow
+    &:hover
+      .body
+        box-shadow: $shadowInset,0px 10px $colorShadow
+        background-color: $colorOrange
+          margin-left: 0
+      transform: translateX(40px)
+      .eyes
+        transform: translateX(30px)
+      .eyeball
+        transform: translateX(25px)
+      
+.scene:active
+  .question
+    display: block
+  .person
+    transform: scale(0.9)
+  
